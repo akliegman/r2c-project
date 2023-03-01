@@ -1,0 +1,14 @@
+.Header {
+  flex: 0;
+  height: 4.1875rem;
+  max-height: 4.1875rem;
+  display: flex;
+  align-items: center;
+  padding: 1.3175rem 1.5rem;
+}
+
+.Header-title {
+  font-size: var(--font-size);
+  line-height: 1.55;
+  font-weight: 800;
+}
