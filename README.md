@@ -2,6 +2,19 @@
 
 In the project directory, run:
 
+## Scope/decisions
+
+- Built it in React as a SPA, where progress is stored in the mock DB
+- Using localStorage as a mock DB
+- Did not include the comments section
+- Did not include the "right-click" functionality, instead focusing on having the delete and move album functionality localized to the fullscreen photo modal
+- Did not include a confirmation dialog for the move/delete functionalities, which is not the best UX, but meets the functional requirements of the project
+- Contributed lightweight out-of-the-box testing, but would expand and better this with more time
+- Worked with vanilla css, would reconsider this option with more time
+- `TODO`s are listed throughout the codebase for logical next steps in the app's development
+
+## Instructions
+
 ### `npm start`
 
 Runs the app in the development mode.\
