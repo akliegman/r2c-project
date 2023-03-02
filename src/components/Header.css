@@ -4,6 +4,7 @@
   max-height: 4.1875rem;
   display: flex;
   align-items: center;
+  white-space: nowrap;
   padding: 1.3175rem 1.5rem;
 }
 
@@ -11,4 +12,11 @@
   font-size: var(--font-size);
   line-height: 1.55;
   font-weight: 800;
+}
+
+@media (max-width: 768px) {
+  .Header {
+    padding: 0;
+    height: fit-content;
+  }
 }

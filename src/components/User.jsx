@@ -6,6 +6,7 @@ export const User = () => {
   return (
     <div className="User">
       {/* TODO: turn div into button */}
+      {/* TODO: mobile view */}
       <div className="User-button">
         <img
           className="User-avatar"

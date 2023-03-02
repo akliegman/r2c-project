@@ -10,3 +10,13 @@
   flex-direction: column;
   width: 100%;
 }
+
+@media (max-width: 768px) {
+  .App {
+    flex-direction: column;
+  }
+
+  .App-content {
+    max-height: calc(100vh - 3.75rem);
+  }
+}

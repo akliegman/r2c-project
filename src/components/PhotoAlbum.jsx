@@ -1,4 +1,5 @@
 import "./PhotoAlbum.css";
+import PropTypes from "prop-types";
 
 export const PhotoAlbum = ({ activeAlbum, activePhotos, setActivePhoto }) => {
   return (
@@ -12,7 +13,7 @@ export const PhotoAlbum = ({ activeAlbum, activePhotos, setActivePhoto }) => {
             key={photo.id}
           >
             <figure>
-              <img src={photo.thumbnailUrl} alt={photo.title} />
+              <img role="img" src={photo.thumbnailUrl} alt={photo.title} />
               <figcaption>{photo.title}</figcaption>
             </figure>
           </button>
@@ -20,4 +21,10 @@ export const PhotoAlbum = ({ activeAlbum, activePhotos, setActivePhoto }) => {
       </div>
     </div>
   );
+};
+
+PhotoAlbum.propTypes = {
+  activeAlbum: PropTypes.string,
+  activePhotos: PropTypes.array,
+  setActivePhoto: PropTypes.func,
 };

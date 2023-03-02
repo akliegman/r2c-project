@@ -24,7 +24,6 @@
   border: 0;
   padding: 0;
   background-color: transparent;
-  height: 19.125rem;
   cursor: pointer;
 }
 
@@ -63,4 +62,44 @@
 
 .PhotoAlbum-photo:hover > figure > figcaption {
   opacity: 1;
+}
+
+@media (max-width: 1360px) {
+  .PhotoAlbum-photos {
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 64rem;
+  }
+  .PhotoAlbum-title {
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 1512px) {
+  .PhotoAlbum-title {
+    max-width: 80rem;
+    width: 100%;
+    align-self: center;
+  }
+  .PhotoAlbum-photos {
+    max-width: 80rem;
+    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    align-self: center;
+  }
+}
+
+@media (max-width: 1024px) {
+  .PhotoAlbum-photos {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .PhotoAlbum {
+    padding: 1.25rem 1.125rem;
+  }
+  .PhotoAlbum-title {
+    display: none;
+    gap: 1.25rem;
+  }
 }

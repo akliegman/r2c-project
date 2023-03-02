@@ -1,15 +1,13 @@
-import axios from "axios";
 import { groupArrayByKey } from "../utils/groupArrayByKey";
 
 export const getPhotos = async () => {
-  // uses axios to grab photos from the API in try catach
-  try {
-    const response = await axios.get(
-      "https://jsonplaceholder.typicode.com/photos"
-    );
+  const response = await fetch("https://jsonplaceholder.typicode.com/photos")
+    .then((response) => response.json())
+    .catch((error) => {
+      // TODO: handle error
+      console.error("Error:", error);
+    });
 
-    return groupArrayByKey(response.data, "albumId");
-  } catch (error) {
-    console.log(error);
-  }
+  const groupedPhotos = groupArrayByKey(response, "albumId");
+  return groupedPhotos;
 };

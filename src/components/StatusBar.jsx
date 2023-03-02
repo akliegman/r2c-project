@@ -1,4 +1,5 @@
 import "./StatusBar.css";
+import PropTypes from "prop-types";
 
 export const StatusBar = ({ activePhotosLength }) => {
   return (
@@ -8,4 +9,8 @@ export const StatusBar = ({ activePhotosLength }) => {
       <p className="StatusBar-text">Last updated 3 days ago</p>
     </div>
   );
+};
+
+StatusBar.propTypes = {
+  activePhotosLength: PropTypes.number,
 };

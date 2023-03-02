@@ -6,6 +6,7 @@ import { Sidebar } from "./components/Sidebar";
 import { PhotoAlbum } from "./components/PhotoAlbum";
 import { StatusBar } from "./components/StatusBar";
 import { Modal } from "./components/Modal";
+import PropTypes from "prop-types";
 
 export default function App() {
   // useLocalStorage hook to store photos in local storage
@@ -50,6 +51,7 @@ export default function App() {
         "Loading..."
       )}
       {activePhoto && (
+        // TODO: animate modal transitions
         <Modal
           activePhoto={activePhoto}
           setActivePhoto={setActivePhoto}
@@ -60,3 +62,12 @@ export default function App() {
     </div>
   );
 }
+
+App.propTypes = {
+  photos: PropTypes.object,
+  setPhotos: PropTypes.func,
+  activeAlbum: PropTypes.string,
+  setActiveAlbum: PropTypes.func,
+  activePhoto: PropTypes.object,
+  setActivePhoto: PropTypes.func,
+};
