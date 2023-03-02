@@ -83,6 +83,7 @@ export const Modal = ({ activePhoto, setActivePhoto, photos, setPhotos }) => {
                             onClick={(event) =>
                               movePhoto(activePhoto.id, event.target.value)
                             }
+                            key={album}
                           >
                             Album {album}
                           </li>
