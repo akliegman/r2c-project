@@ -1,7 +1,10 @@
 import "./StatusBar.css";
-import PropTypes from "prop-types";
 
-export const StatusBar = ({ activePhotosLength }) => {
+interface Props {
+  activePhotosLength?: number;
+}
+
+export const StatusBar: React.FC<Props> = ({ activePhotosLength }) => {
   return (
     <div className="StatusBar">
       <p className="StatusBar-text">{activePhotosLength} photos</p>
@@ -9,8 +12,4 @@ export const StatusBar = ({ activePhotosLength }) => {
       <p className="StatusBar-text">Last updated 3 days ago</p>
     </div>
   );
-};
-
-StatusBar.propTypes = {
-  activePhotosLength: PropTypes.number,
 };

@@ -6,27 +6,49 @@ import { Sidebar } from "./components/Sidebar";
 import { PhotoAlbum } from "./components/PhotoAlbum";
 import { StatusBar } from "./components/StatusBar";
 import { Modal } from "./components/Modal";
-import PropTypes from "prop-types";
+import { Photo } from "./types";
 
-export default function App() {
+interface AppProps {
+  photos: { [key: string]: Photo[] };
+  setPhotos: (photos: { [key: string]: Photo[] }) => void;
+  activeAlbum: string;
+  setActiveAlbum: (activeAlbum: string) => void;
+  initialActivePhoto: Photo | null;
+}
+
+export default function App({
+  photos: initialPhotos,
+  setPhotos,
+  activeAlbum: initialActiveAlbum,
+  setActiveAlbum,
+  initialActivePhoto,
+}: AppProps) {
   // useLocalStorage hook to store photos in local storage
-  const [photos, setPhotos] = useLocalStorage("photos", false);
-  const [activeAlbum, setActiveAlbum] = useLocalStorage("activeAlbum", false);
-  const [activePhoto, setActivePhoto] = useState(false);
+  const [photos, setLocalStoragePhotos] = useLocalStorage(
+    "photos",
+    initialPhotos
+  );
+  const [activeAlbum, setLocalStorageActiveAlbum] = useLocalStorage(
+    "activeAlbum",
+    initialActiveAlbum
+  );
+  const [activePhoto, setActivePhoto] = useState<Photo | null>(
+    initialActivePhoto
+  );
 
   useEffect(() => {
     // if photos is empty, get photos from API
     if (!photos) {
       getPhotos().then((data) => {
-        setPhotos(data);
+        setLocalStoragePhotos(data);
       });
     }
 
     // if activeAlbum is false, set activeAlbum to first tag in photos
-    if (!activeAlbum) {
-      setActiveAlbum(Object.keys(photos)[0]);
+    if (!activeAlbum && photos) {
+      setLocalStorageActiveAlbum(Object.keys(photos)[0]);
     }
-  }, [photos]);
+  }, [activeAlbum, photos, setLocalStorageActiveAlbum, setLocalStoragePhotos]);
 
   return (
     <div className="App">
@@ -35,7 +57,7 @@ export default function App() {
           <Sidebar
             albumNames={Object.keys(photos)}
             activeAlbum={activeAlbum}
-            setActiveAlbum={setActiveAlbum}
+            setActiveAlbum={setLocalStorageActiveAlbum}
           />
           <div className="App-content">
             <PhotoAlbum
@@ -56,18 +78,8 @@ export default function App() {
           activePhoto={activePhoto}
           setActivePhoto={setActivePhoto}
           photos={photos}
-          setPhotos={setPhotos}
         />
       )}
     </div>
   );
 }
-
-App.propTypes = {
-  photos: PropTypes.object,
-  setPhotos: PropTypes.func,
-  activeAlbum: PropTypes.string,
-  setActiveAlbum: PropTypes.func,
-  activePhoto: PropTypes.object,
-  setActivePhoto: PropTypes.func,
-};

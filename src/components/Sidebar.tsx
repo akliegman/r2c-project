@@ -4,9 +4,18 @@ import { useState } from "react";
 import clsx from "clsx";
 import menu from "../assets/menu.svg";
 import "./Sidebar.css";
-import PropTypes from "prop-types";
 
-export const Sidebar = ({ albumNames, activeAlbum, setActiveAlbum }) => {
+interface SidebarProps {
+  albumNames: string[];
+  activeAlbum: string;
+  setActiveAlbum: (album: string) => void;
+}
+
+export const Sidebar = ({
+  albumNames,
+  activeAlbum,
+  setActiveAlbum,
+}: SidebarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
@@ -39,10 +48,4 @@ export const Sidebar = ({ albumNames, activeAlbum, setActiveAlbum }) => {
       <User />
     </div>
   );
-};
-
-Sidebar.propTypes = {
-  albumNames: PropTypes.array,
-  activeAlbum: PropTypes.string,
-  setActiveAlbum: PropTypes.func,
 };

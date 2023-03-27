@@ -2,11 +2,9 @@ import "./User.css";
 import avatar from "../assets/avatar.png";
 import chevronRight from "../assets/chevron-right.svg";
 
-export const User = () => {
+export const User: React.FC = () => {
   return (
-    <div className="User">
-      {/* TODO: turn div into button */}
-      {/* TODO: mobile view */}
+    <button className="User">
       <div className="User-button">
         <img
           className="User-avatar"
@@ -27,6 +25,6 @@ export const User = () => {
           alt=""
         />
       </div>
-    </div>
+    </button>
   );
 };

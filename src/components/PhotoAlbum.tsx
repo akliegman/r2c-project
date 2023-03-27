@@ -1,7 +1,25 @@
+import React from "react";
 import "./PhotoAlbum.css";
-import PropTypes from "prop-types";
 
-export const PhotoAlbum = ({ activeAlbum, activePhotos, setActivePhoto }) => {
+interface Photo {
+  albumId: number;
+  id: number;
+  title: string;
+  url: string;
+  thumbnailUrl: string;
+}
+
+interface PhotoAlbumProps {
+  activeAlbum: string;
+  activePhotos: Photo[] | undefined;
+  setActivePhoto: React.Dispatch<React.SetStateAction<Photo | false>>;
+}
+
+export const PhotoAlbum: React.FC<PhotoAlbumProps> = ({
+  activeAlbum,
+  activePhotos,
+  setActivePhoto,
+}) => {
   return (
     <div className="PhotoAlbum">
       <h1 className="PhotoAlbum-title">Album {activeAlbum}</h1>
@@ -21,10 +39,4 @@ export const PhotoAlbum = ({ activeAlbum, activePhotos, setActivePhoto }) => {
       </div>
     </div>
   );
-};
-
-PhotoAlbum.propTypes = {
-  activeAlbum: PropTypes.string,
-  activePhotos: PropTypes.array,
-  setActivePhoto: PropTypes.func,
 };
